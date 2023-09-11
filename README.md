@@ -4,4 +4,4 @@ A Spicetify app which allows the library to be opened in the center pane, simila
 ![Preview](preview.png)
 
 ## Installation
-Download the zip from the releaces section, unzip it, and place the folder in the CustomApps folder.
+Download the zip from the releases section, unzip it, and place the folder in the CustomApps folder.
