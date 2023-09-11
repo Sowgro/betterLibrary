@@ -1,0 +1,3 @@
+.betterlibheader{
+    margin: 0 calc(-.5 * var(--content-spacing));
+}

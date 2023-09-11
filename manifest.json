@@ -1,0 +1,11 @@
+{
+    "name": "betterLibrary",
+    "description": "Allows the library to be opened in the center pane, similar to how you could before the redesign",
+    "preview": "preview.png",
+    "readme": "README.md",
+    "branch": "main",
+    "authors": [
+        { "name": "sowgro", "url": "https://sowgro.net/" }
+    ],
+    "tags": ["library"]
+}
