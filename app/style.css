@@ -17,6 +17,7 @@
 }
 
 /* makes the "your library" text not clickable */
+.Button-sc-1dqy6lx-0.Button-md-24-buttonTertiary-iconLeading-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base,
 .Button-sc-1dqy6lx-0.Button-md-24-buttonTertiary-iconLeading-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-album.main-useDropTarget-artist.main-useDropTarget-playlistV2.main-useDropTarget-show.main-useDropTarget-episode
 {
     pointer-events: none;
@@ -34,12 +35,30 @@
     display: flex;
 }
 
-/* hides expand and collapse icons */
-.Button-sc-1dqy6lx-0.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-album.main-useDropTarget-artist.main-useDropTarget-playlistV2.main-useDropTarget-show.main-useDropTarget-episode,
-.Button-sc-1dqy6lx-0.Button-md-24-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-local.main-useDropTarget-album.main-useDropTarget-episode.main-useDropTarget-playlistV2,
-.Button-sc-1dqy6lx-0.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-local.main-useDropTarget-album.main-useDropTarget-episode.main-useDropTarget-playlistV2, 
+/* hides collapse button */
 .IconWrapper__Wrapper-sc-16usrgb-0.Wrapper-md-leading {
     display: none;
+}
+
+/* hides collapse button in folder*/
+.Button-sc-1dqy6lx-0.Button-md-24-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base
+{
+    display: none;
+}
+
+/* hides expand/reduce button (and also add and more) */
+button.Button-sc-1dqy6lx-0.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base {
+    display: none;
+}
+
+/* shows add */
+button.Button-sc-1dqy6lx-0.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle.main-yourLibraryX-createButton.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-album.main-useDropTarget-playlistV2 {
+    display: inherit;
+}
+
+/* shows more */
+span button.Button-sc-1dqy6lx-0.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base {
+    display: inherit;
 }
 
 /* add more padding to the sidebar */
