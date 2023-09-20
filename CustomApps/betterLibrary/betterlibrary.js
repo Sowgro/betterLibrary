@@ -26,12 +26,12 @@ function enableBetterLib() {
             sidebar.appendChild(text);
             if (Spicetify.Platform.History)
             lastSidebarMode = Spicetify.Platform.LocalStorageAPI.getItem("ylx-sidebar-state");
-            lastSidebarSize = document.documentElement.style.getPropertyValue("--nav-bar-width");
+            lastSidebarSize = document.documentElement.style.getPropertyValue("--left-sidebar-width");
             Spicetify.Platform.LocalStorageAPI.setItem("ylx-sidebar-state",2);
             if (lastSidebarMode != 1) //uncollapes sidebar temporarily while in betterlibrary
-                document.documentElement.style.setProperty("--nav-bar-width", lastSidebarSize);
+                document.documentElement.style.setProperty("--left-sidebar-width", lastSidebarSize);
             else
-                document.documentElement.style.setProperty("--nav-bar-width", "280px");
+                document.documentElement.style.setProperty("--left-sidebar-width", "280px");
             betterLibIsEnabled = true;
         }
     });
@@ -41,7 +41,7 @@ function disableBetterLib() {
     sidebar.appendChild(library);
     center.appendChild(text);
     Spicetify.Platform.LocalStorageAPI.setItem("ylx-sidebar-state",lastSidebarMode);
-    document.documentElement.style.setProperty("--nav-bar-width", lastSidebarSize);
+    document.documentElement.style.setProperty("--left-sidebar-width", lastSidebarSize);
     betterLibIsEnabled = false;
 }
 
