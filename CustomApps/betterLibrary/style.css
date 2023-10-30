@@ -13,7 +13,7 @@
 
 /* makes the text visible only when it is in the sidebar */
 .main-yourLibraryX-library .betterLibText {
-    display: flex;
+    display: var(--betterlib-show-placeholder-text);
 }
 
 /* makes the "your library" text not clickable */
@@ -64,4 +64,14 @@ span button.Button-sc-1dqy6lx-0.Button-sm-16-buttonTertiary-iconOnly-useBrowserD
 /* add more padding to the sidebar */
 .main-yourLibraryX-library {
     padding-top: 5px;
+}
+
+/* fixes icons on collapsed betterlibrary */
+span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+    display: var(--betterlib-fix-collaped-view,inherit);
+}
+
+/* for future setting */
+.main-yourLibraryX-entryPoints.main-yourLibraryX-library {
+    display: var(--betterlib-hide-sidebar-library,inherit);
 }

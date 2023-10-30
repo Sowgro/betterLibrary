@@ -3,8 +3,10 @@ var sidebar;
 var text;
 var center;
 var betterLibIsEnabled;
-var lastSidebarSize;
-var lastSidebarMode; // 1=collapsed, 0=normal, 2=expanded
+var lastSidebarSize; //
+var lastSidebarMode; //ylx-sidebar-state 1=collapsed, 0=normal, 2=expanded
+var lastViewIcons; //items-view 1=icons 2=list
+var lastViewCompact; //library-row-mode 1=compact 2=normal
 
 // Disables betterlibrary when the pages is left
 function startListener() {
@@ -18,30 +20,71 @@ function enableBetterLib() {
     waitForElm('.betterLibBox').then((elm) => {
         if (!betterLibIsEnabled)
         {
+            //swap elements
             library = document.getElementsByClassName("main-yourLibraryX-libraryContainer")[0];
             text = document.getElementsByClassName("betterLibText")[0];
             sidebar = document.getElementsByClassName("main-yourLibraryX-library")[0];
             center = document.getElementsByClassName("betterLibBox")[0];
             center.appendChild(library);
             sidebar.appendChild(text);
-            if (Spicetify.Platform.History)
+
+            //store last mode and size
             lastSidebarMode = Spicetify.Platform.LocalStorageAPI.getItem("ylx-sidebar-state");
-            lastSidebarSize = document.documentElement.style.getPropertyValue("--left-sidebar-width");
+            lastSidebarSize = Spicetify.Platform.LocalStorageAPI.getItem("ylx-expanded-state-nav-bar-width");
+
+            //set new mode and size
+            currentSidebarSize = document.documentElement.style.getPropertyValue("--left-sidebar-width");
+            currentSidebarSize = parseInt(currentSidebarSize, 10);
+            Spicetify.Platform.LocalStorageAPI.setItem("ylx-expanded-state-nav-bar-width",currentSidebarSize);
             Spicetify.Platform.LocalStorageAPI.setItem("ylx-sidebar-state",2);
-            if (lastSidebarMode != 1) //uncollapes sidebar temporarily while in betterlibrary
-                document.documentElement.style.setProperty("--left-sidebar-width", lastSidebarSize);
-            else
-                document.documentElement.style.setProperty("--left-sidebar-width", "280px");
+
+            //fix collaped library buttons
+            if (lastSidebarMode == 1) {
+                document.documentElement.style.setProperty("--betterlib-fix-collaped-view","none");
+                document.documentElement.style.setProperty("--betterlib-show-placeholder-text","none");
+            }
+
+            //store last icons mode and compact mode
+            lastViewIcons = Spicetify.Platform.LocalStorageAPI.getItem("items-view")
+            lastViewCompact = Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode")
+
+            //get betterlib icons mode and compact mode from storage
+            newViewIcons = Spicetify.Platform.LocalStorageAPI.getItem("betterlib-items-view")
+            newViewCompact = Spicetify.Platform.LocalStorageAPI.getItem("betterlib-library-row-mode")
+
+            //apply betterlib icons mode and compact mode
+            Spicetify.Platform.LocalStorageAPI.setItem("items-view", newViewIcons);
+            Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", newViewCompact);
+
+
             betterLibIsEnabled = true;
         }
     });
 }
 
 function disableBetterLib() {
+    //undo fix for collaped library buttons
+    if (lastSidebarMode == 1) {
+        document.documentElement.style.setProperty("--betterlib-fix-collaped-view","inherit");
+        document.documentElement.style.setProperty("--betterlib-show-placeholder-text","flex");
+    }
+
+    //revert swap
     sidebar.appendChild(library);
     center.appendChild(text);
+
+    //reset mode and size to last
+    Spicetify.Platform.LocalStorageAPI.setItem("lx-expanded-state-nav-bar-width",lastSidebarSize);
     Spicetify.Platform.LocalStorageAPI.setItem("ylx-sidebar-state",lastSidebarMode);
-    document.documentElement.style.setProperty("--left-sidebar-width", lastSidebarSize);
+
+    //save betterlib icons mode and compact mode to storage
+    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-items-view", Spicetify.Platform.LocalStorageAPI.getItem("items-view"));
+    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-library-row-mode", Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode"));
+
+    //revert icons and compact mode to last
+    Spicetify.Platform.LocalStorageAPI.setItem("items-view", lastViewIcons);
+    Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", lastViewCompact);
+
     betterLibIsEnabled = false;
 }
 

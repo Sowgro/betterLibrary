@@ -13,7 +13,7 @@ const {
 function render() {
     startListener(); //I added this
     enableBetterLib(); //And this
-    return react.createElement(Grid, { title: "Opened in the center pane" });
+    return react.createElement(Grid, { title: "Open in the main view" });
 }
 
 //builds components of the page
