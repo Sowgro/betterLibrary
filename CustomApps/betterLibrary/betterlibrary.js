@@ -14,6 +14,15 @@ function startListener() {
         if (location.pathname != '/betterlibrary' && betterLibIsEnabled)
             disableBetterLib();
     });
+    window.addEventListener(
+        'beforeunload',
+        (event) => {
+            if (betterLibIsEnabled)
+            {
+                disableBetterLib();
+            }
+        }
+        )
 }
 
 function enableBetterLib() {
@@ -45,12 +54,12 @@ function enableBetterLib() {
             }
 
             //store last icons mode and compact mode
-            lastViewIcons = Spicetify.Platform.LocalStorageAPI.getItem("items-view")
-            lastViewCompact = Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode")
+            lastViewIcons = Spicetify.Platform.LocalStorageAPI.getItem("items-view");
+            lastViewCompact = Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode");
 
             //get betterlib icons mode and compact mode from storage
-            newViewIcons = Spicetify.Platform.LocalStorageAPI.getItem("betterlib-items-view")
-            newViewCompact = Spicetify.Platform.LocalStorageAPI.getItem("betterlib-library-row-mode")
+            newViewIcons = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-items-view"),10);
+            newViewCompact = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-library-row-mode"),10);
 
             //apply betterlib icons mode and compact mode
             Spicetify.Platform.LocalStorageAPI.setItem("items-view", newViewIcons);
@@ -69,6 +78,18 @@ function disableBetterLib() {
         document.documentElement.style.setProperty("--betterlib-show-placeholder-text","flex");
     }
 
+    //get current betterlib icons mode and compact mode
+    currentViewIcons = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("items-view"),10);
+    currentViewCompact = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode"),10);
+
+    //save betterlib icons mode and compact mode to storage
+    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-items-view", currentViewIcons);
+    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-library-row-mode", currentViewCompact);
+
+    //revert icons and compact mode to last
+    Spicetify.Platform.LocalStorageAPI.setItem("items-view", lastViewIcons);
+    Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", lastViewCompact);
+
     //revert swap
     sidebar.appendChild(library);
     center.appendChild(text);
@@ -76,14 +97,6 @@ function disableBetterLib() {
     //reset mode and size to last
     Spicetify.Platform.LocalStorageAPI.setItem("lx-expanded-state-nav-bar-width",lastSidebarSize);
     Spicetify.Platform.LocalStorageAPI.setItem("ylx-sidebar-state",lastSidebarMode);
-
-    //save betterlib icons mode and compact mode to storage
-    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-items-view", Spicetify.Platform.LocalStorageAPI.getItem("items-view"));
-    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-library-row-mode", Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode"));
-
-    //revert icons and compact mode to last
-    Spicetify.Platform.LocalStorageAPI.setItem("items-view", lastViewIcons);
-    Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", lastViewCompact);
 
     betterLibIsEnabled = false;
 }

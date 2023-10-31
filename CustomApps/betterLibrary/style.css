@@ -13,7 +13,7 @@
 
 /* makes the text visible only when it is in the sidebar */
 .main-yourLibraryX-library .betterLibText {
-    display: var(--betterlib-show-placeholder-text);
+    display: var(--betterlib-show-placeholder-text,flex);
 }
 
 /* makes the "your library" text not clickable */
