@@ -9,8 +9,9 @@ var lastViewIcons; //items-view 1=icons 2=list
 var lastViewCompact; //library-row-mode 1=compact 2=normal
 
 // Disables betterlibrary when the pages is left
-function startListener() {
+function startBetterLibListener() {
     Spicetify.Platform.History.listen((location) => {
+        console.log("betterlib listener called")
         if (location.pathname != '/betterlibrary' && betterLibIsEnabled)
             disableBetterLib();
     });

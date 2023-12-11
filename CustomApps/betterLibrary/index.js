@@ -11,7 +11,7 @@ const {
 
 // this is called when the page is open
 function render() {
-    startListener(); //I added this
+    startBetterLibListener(); //I added this
     enableBetterLib(); //And this
     return react.createElement(Grid, { title: "Open in the main view" });
 }
