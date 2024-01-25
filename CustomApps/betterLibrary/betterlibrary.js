@@ -55,17 +55,19 @@ function enableBetterLib() {
             }
 
             //store last icons mode and compact mode
+            lastViewSize = Spicetify.Platform.LocalStorageAPI.getItem("ylx-grid-scale");
             lastViewIcons = Spicetify.Platform.LocalStorageAPI.getItem("items-view");
             lastViewCompact = Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode");
 
             //get betterlib icons mode and compact mode from storage
+            newViewSize = parseFloat(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-ylx-grid-scale"),10);
             newViewIcons = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-items-view"),10);
             newViewCompact = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-library-row-mode"),10);
 
             //apply betterlib icons mode and compact mode
+            Spicetify.Platform.LocalStorageAPI.setItem("ylx-grid-scale", newViewSize);
             Spicetify.Platform.LocalStorageAPI.setItem("items-view", newViewIcons);
             Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", newViewCompact);
-
 
             betterLibIsEnabled = true;
         }
@@ -82,14 +84,17 @@ function disableBetterLib() {
     //get current betterlib icons mode and compact mode
     currentViewIcons = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("items-view"),10);
     currentViewCompact = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode"),10);
+    currentViewSize = parseFloat(Spicetify.Platform.LocalStorageAPI.getItem("ylx-grid-scale"),10);
 
     //save betterlib icons mode and compact mode to storage
     Spicetify.Platform.LocalStorageAPI.setItem("betterlib-items-view", currentViewIcons);
     Spicetify.Platform.LocalStorageAPI.setItem("betterlib-library-row-mode", currentViewCompact);
+    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-ylx-grid-scale", currentViewSize);
 
     //revert icons and compact mode to last
     Spicetify.Platform.LocalStorageAPI.setItem("items-view", lastViewIcons);
     Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", lastViewCompact);
+    Spicetify.Platform.LocalStorageAPI.setItem("ylx-grid-scale", lastViewSize);
 
     //revert swap
     sidebar.appendChild(library);
