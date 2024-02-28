@@ -21,9 +21,7 @@
             }
             
             /* makes the "your library" not clickable, expands and styles the text*/
-            button.Button-sc-1dqy6lx-0.Button-medium-medium-buttonTertiary-iconLeading-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-album.main-useDropTarget-artist.main-useDropTarget-playlistV2.main-useDropTarget-show.main-useDropTarget-episode.main-useDropTarget-folder,
-            button.Button-sc-1dqy6lx-0.Button-medium-medium-buttonTertiary-iconLeading-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base
-            {
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.NxEINIJHGytq4gF1r2N1 {
                 pointer-events: none;
                 font-size: x-large;
                 color: white;
@@ -45,18 +43,18 @@
             }
             
             /* hides collapse button (library icon) in folder*/
-            /* button.Button-sc-1dqy6lx-0.Button-medium-medium-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-local.main-useDropTarget-album.main-useDropTarget-episode.main-useDropTarget-playlistV2.main-useDropTarget-folder, */
-            button.Button-sc-1dqy6lx-0.Button-medium-medium-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base {
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.NxEINIJHGytq4gF1r2N1.Button-medium-medium-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle,
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.NxEINIJHGytq4gF1r2N1.Button-medium-medium-buttonTertiary-iconOnly-condensed-isUsingKeyboard-useBrowserDefaultFocusStyle {
                 display: none;
             }
             
-            /* hides expand/reduce button (<- ->)(and also add(+) and more(...))*/
-            button.Button-sc-1dqy6lx-0.Button-small-small-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base {
+            /* hides expand/reduce button (<- ->) and also add(+), more(...)*/
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconOnly.NxEINIJHGytq4gF1r2N1 {
                 display: none;
             }
             
             /* unhides add(+) and more(...)*/
-            span button.Button-sc-1dqy6lx-0.Button-small-small-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base {
+            span button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconOnly.NxEINIJHGytq4gF1r2N1 {
                 display: inherit;
             }
             
