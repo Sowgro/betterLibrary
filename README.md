@@ -15,3 +15,13 @@ A [Spicetify](https://spicetify.app/) custom app which allows the library to be 
     ```
     spicetify apply
     ```
+## Uninstallation
+1. Delete the betterLibrary folder from your Spicetify CustomApps folder
+1. Run the following commands
+
+   ```
+   spicetify config custom_apps betterLibrary-
+   ```
+   ```
+   spicetify apply
+   ```
