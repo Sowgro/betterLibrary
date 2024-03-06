@@ -60,7 +60,8 @@ span button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconO
 }
 
 /* fixes icons on collapsed betterlibrary */
-span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type, span.Text__TextElement-sc-if376j-0 {
+span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type,
+.main-yourLibraryX-navItem span.Text__TextElement-sc-if376j-0 {
     display: var(--betterlib-fix-collaped-view,inherit);
 }
 

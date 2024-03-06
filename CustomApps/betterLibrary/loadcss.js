@@ -48,7 +48,7 @@
                 display: none;
             }
             
-            /* hides expand/reduce button (<- ->) and also add(+), more(...)*/
+            /* hides expand/reduce button (<- ->) and also add(+) and more(...)*/
             button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconOnly.NxEINIJHGytq4gF1r2N1 {
                 display: none;
             }
@@ -64,7 +64,8 @@
             }
             
             /* fixes icons on collapsed betterlibrary */
-            span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type, span.Text__TextElement-sc-if376j-0 {
+            span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type,
+            .main-yourLibraryX-navItem span.Text__TextElement-sc-if376j-0 {
                 display: var(--betterlib-fix-collaped-view,inherit);
             }
             
