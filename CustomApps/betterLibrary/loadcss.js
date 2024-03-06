@@ -64,7 +64,7 @@
             }
             
             /* fixes icons on collapsed betterlibrary */
-            span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+            span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type, span.Text__TextElement-sc-if376j-0 {
                 display: var(--betterlib-fix-collaped-view,inherit);
             }
             
