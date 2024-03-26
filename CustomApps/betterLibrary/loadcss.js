@@ -1,7 +1,7 @@
 (function loadcss() {
     document.getElementsByTagName('head')[0].insertAdjacentHTML(
         'beforeend',`
-        <style>
+            <style>
             /* remove resize bar while in betterlibrary */
             .Root__top-container:has(.betterLibBox) .LayoutResizer__resize-bar {
                 visibility: hidden;
@@ -21,6 +21,7 @@
             }
             
             /* makes the "your library" not clickable, expands and styles the text*/
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base,
             button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.NxEINIJHGytq4gF1r2N1 {
                 pointer-events: none;
                 font-size: x-large;
@@ -43,17 +44,21 @@
             }
             
             /* hides collapse button (library icon) in folder*/
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base.Button-medium-medium-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle,
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.main-useDropTarget-base.Button-medium-medium-buttonTertiary-iconOnly-condensed-isUsingKeyboard-useBrowserDefaultFocusStyle,
             button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.NxEINIJHGytq4gF1r2N1.Button-medium-medium-buttonTertiary-iconOnly-condensed-useBrowserDefaultFocusStyle,
             button.Button-sc-1dqy6lx-0.main-yourLibraryX-collapseButtonWrapper.main-yourLibraryX-button.NxEINIJHGytq4gF1r2N1.Button-medium-medium-buttonTertiary-iconOnly-condensed-isUsingKeyboard-useBrowserDefaultFocusStyle {
                 display: none;
             }
             
             /* hides expand/reduce button (<- ->) and also add(+) and more(...)*/
+            button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base,
             button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconOnly.NxEINIJHGytq4gF1r2N1 {
                 display: none;
             }
             
             /* unhides add(+) and more(...)*/
+            span button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconOnly.main-useDropTarget-base,
             span button.Button-sc-1dqy6lx-0.main-yourLibraryX-button.main-yourLibraryX-iconOnly.NxEINIJHGytq4gF1r2N1 {
                 display: inherit;
             }

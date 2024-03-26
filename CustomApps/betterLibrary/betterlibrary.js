@@ -11,17 +11,14 @@ var lastViewCompact; //library-row-mode 1=compact 2=normal
 // Disables betterlibrary when the pages is left
 function startBetterLibListener() {
     Spicetify.Platform.History.listen((location) => {
-        console.log("betterlib listener called")
-        if (location.pathname != '/betterlibrary' && betterLibIsEnabled)
+        // console.log("betterlib listener called")
+        if (location.pathname != '/betterlibrary')
             disableBetterLib();
     });
     window.addEventListener(
         'beforeunload',
         (event) => {
-            if (betterLibIsEnabled)
-            {
-                disableBetterLib();
-            }
+            disableBetterLib();
         }
         )
 }
@@ -61,6 +58,9 @@ function enableBetterLib() {
 
             //get betterlib icons mode and compact mode from storage
             newViewSize = parseFloat(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-ylx-grid-scale"),10);
+            if (newViewSize == null) {
+                newViewSize = 1;
+            }
             newViewIcons = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-items-view"),10);
             newViewCompact = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("betterlib-library-row-mode"),10);
 
@@ -75,36 +75,39 @@ function enableBetterLib() {
 }
 
 function disableBetterLib() {
-    //undo fix for collaped library buttons
-    if (lastSidebarMode == 1) {
-        document.documentElement.style.setProperty("--betterlib-fix-collaped-view","inherit");
-        document.documentElement.style.setProperty("--betterlib-show-placeholder-text","flex");
+    if (betterLibIsEnabled)
+    {
+        //undo fix for collaped library buttons
+        if (lastSidebarMode == 1) {
+            document.documentElement.style.setProperty("--betterlib-fix-collaped-view","inherit");
+            document.documentElement.style.setProperty("--betterlib-show-placeholder-text","flex");
+        }
+
+        //get current betterlib icons mode and compact mode
+        currentViewIcons = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("items-view"),10);
+        currentViewCompact = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode"),10);
+        currentViewSize = parseFloat(Spicetify.Platform.LocalStorageAPI.getItem("ylx-grid-scale"),10);
+
+        //save betterlib icons mode and compact mode to storage
+        Spicetify.Platform.LocalStorageAPI.setItem("betterlib-items-view", currentViewIcons);
+        Spicetify.Platform.LocalStorageAPI.setItem("betterlib-library-row-mode", currentViewCompact);
+        Spicetify.Platform.LocalStorageAPI.setItem("betterlib-ylx-grid-scale", currentViewSize);
+
+        //revert icons and compact mode to last
+        Spicetify.Platform.LocalStorageAPI.setItem("items-view", lastViewIcons);
+        Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", lastViewCompact);
+        Spicetify.Platform.LocalStorageAPI.setItem("ylx-grid-scale", lastViewSize);
+
+        //revert swap
+        sidebar.appendChild(library);
+        center.appendChild(text);
+
+        //reset mode and size to last
+        Spicetify.Platform.LocalStorageAPI.setItem("lx-expanded-state-nav-bar-width",lastSidebarSize);
+        Spicetify.Platform.LocalStorageAPI.setItem("ylx-sidebar-state",lastSidebarMode);
+
+        betterLibIsEnabled = false;
     }
-
-    //get current betterlib icons mode and compact mode
-    currentViewIcons = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("items-view"),10);
-    currentViewCompact = parseInt(Spicetify.Platform.LocalStorageAPI.getItem("library-row-mode"),10);
-    currentViewSize = parseFloat(Spicetify.Platform.LocalStorageAPI.getItem("ylx-grid-scale"),10);
-
-    //save betterlib icons mode and compact mode to storage
-    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-items-view", currentViewIcons);
-    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-library-row-mode", currentViewCompact);
-    Spicetify.Platform.LocalStorageAPI.setItem("betterlib-ylx-grid-scale", currentViewSize);
-
-    //revert icons and compact mode to last
-    Spicetify.Platform.LocalStorageAPI.setItem("items-view", lastViewIcons);
-    Spicetify.Platform.LocalStorageAPI.setItem("library-row-mode", lastViewCompact);
-    Spicetify.Platform.LocalStorageAPI.setItem("ylx-grid-scale", lastViewSize);
-
-    //revert swap
-    sidebar.appendChild(library);
-    center.appendChild(text);
-
-    //reset mode and size to last
-    Spicetify.Platform.LocalStorageAPI.setItem("lx-expanded-state-nav-bar-width",lastSidebarSize);
-    Spicetify.Platform.LocalStorageAPI.setItem("ylx-sidebar-state",lastSidebarMode);
-
-    betterLibIsEnabled = false;
 }
 
 //source: https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
